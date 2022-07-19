@@ -22,7 +22,7 @@ class my_model(nn.Module):
 
 print('loading data...')
 loader = CSVLoader(headers=('sent1','sent2','label'))
-data_bundle = loader.load('./data')
+data_bundle = loader.load('./data/stackoverflow')
 device = '0'
 bs = 64
 
@@ -39,7 +39,7 @@ print(train_data[:10])
 
 print('vocabulary...')
 vocab = Vocabulary()
-vocab = vocab.load('/home/huang/data/w2v/vocab.txt')
+vocab = vocab.load('./save/vocab.txt')
 vocab.index_dataset(train_data, dev_data, test_data, field_name=['words1', 'words2'], new_field_name=['words1', 'words2'])
 
 target_vocab = Vocabulary(padding=None, unknown=None)
@@ -53,7 +53,7 @@ data_bundle.set_target('target')
 print(train_data[:10])
 
 print('embedding...')
-path = '/home/huang/data/w2v/emb300.txt'
+path = './save/emb300.txt'
 embed = StaticEmbedding(data_bundle.get_vocab('words'), model_dir_or_name=path, requires_grad=False, dropout=0.1, word_dropout=0.1)
 
 
