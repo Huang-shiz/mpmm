@@ -1,3 +1,3 @@
 # MPMM
 
-Code will be released soon.
+Other detail and code will be released soon.
